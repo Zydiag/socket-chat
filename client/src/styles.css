@@ -88,6 +88,7 @@ button {
 
 .message {
   padding: 5px 10px;
+  background: var(--tertiary);
   box-shadow: 1px 1px 1px var(--primary);
   border: 1px solid var(--primary);
   border-radius: 5px;
@@ -101,4 +102,5 @@ button {
 }
 .received {
   margin-right: auto;
+  background: var(--accent);
 }
