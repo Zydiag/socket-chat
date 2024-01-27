@@ -5,10 +5,10 @@
 }
 
 :root {
-  --primary: #80bcbd;
-  --secondary: #aad9bb;
-  --tertiary: #d5f0c1;
-  --accent: #f9f7c9;
+  --primary: #222831;
+  --secondary: #393e46;
+  --tertiary: #00adb5;
+  --accent: #eeeeee;
 }
 
 body {
@@ -21,38 +21,37 @@ body {
 }
 
 body {
-  --sb-track-color: #aad9bb;
-  --sb-thumb-color: #f9f7c9;
-  --sb-size: 3px;
-
-  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  -ms-overflow-style: none;
+  --sb-size: 0px;
+  scrollbar-width: none;
 }
 
-body::-webkit-scrollbar {
-  width: var(--sb-size);
+/* todo: remove scrollbar for firefox*/
+
+.messageContainer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
 }
 
-body::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 18px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 18px;
-}
 .chatWindow {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  gap: 10px;
   height: 60vh;
   width: 80vw;
   border: 1px solid black;
   border-radius: 7px;
   max-width: 1080px;
-  padding: 10px;
   background: var(--secondary);
   box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.9);
+}
+.mainContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 input {
@@ -84,6 +83,9 @@ button {
 .messageContainer {
   flex: 1;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .message {
@@ -99,8 +101,46 @@ button {
 }
 .sent {
   margin-left: auto;
+  background: var(--accent);
 }
 .received {
   margin-right: auto;
-  background: var(--accent);
+}
+
+.sideBar {
+  width: 200px;
+  min-width: 200px;
+  padding: 10px;
+  border-right: 1px solid var(--tertiary);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.sideBarButton {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--tertiary);
+  box-shadow: 1px 1px 2px var(--tertiary);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: 0.25s ease all;
+}
+.sideBarButton:hover {
+  box-shadow: none;
+}
+.sideBarButton > img {
+  filter: invert(1);
+}
+
+.flex-row {
+  display: flex;
+}
+
+.model {
+  display: flex;
+  width: 100%;
+}
+.model > input {
+  width: 100%;
 }

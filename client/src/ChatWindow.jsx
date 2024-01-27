@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import MessageContainer from "./components/MessageContainer";
+import SideLink from "./components/SideLink";
 
 const socket = io.connect("http://localhost:3000");
 
@@ -47,25 +48,31 @@ const ChatWindow = () => {
 
   return (
     <div className="chatWindow">
-      <MessageContainer
-        messages={messages}
-        messagesEndRef={messagesEndRef}
-        userId={userId}
-      />
-      <form action="" onSubmit={handleSubmit}>
-        <div className="inputContainer">
-          <input
-            type="text"
-            onChange={(e) =>
-              setMessage(() => {
-                return { body: e.target.value, sentBy: userId };
-              })
-            }
-            value={message.body}
-          />
-          <button type="sumbit">Send</button>
-        </div>
-      </form>
+      <div className="sideBar">
+        <SideLink name="Join a room" icon="hash-icon" />
+        <SideLink name="Create a room" icon="plus-icon" />
+      </div>
+      <div className="mainContainer">
+        <MessageContainer
+          messages={messages}
+          messagesEndRef={messagesEndRef}
+          userId={userId}
+        />
+        <form action="" onSubmit={handleSubmit}>
+          <div className="inputContainer">
+            <input
+              type="text"
+              onChange={(e) =>
+                setMessage(() => {
+                  return { body: e.target.value, sentBy: userId };
+                })
+              }
+              value={message.body}
+            />
+            <button type="sumbit">Send</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
